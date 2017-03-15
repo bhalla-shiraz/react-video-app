@@ -12,19 +12,31 @@ export default class HomeScreen extends Component {
  constructor(props) {
      super(props)
 
-     this.state = { videos : []}
 
-     YouTubeSearch({key: API_KEY, term : 'react JS'}, (videos) => {
-        this.setState({videos})
-     })
+     this.state = {
+        videos          : [],
+        selectedVideo   : null
+     }
+     this.videoSearch("React JS")
  }
+ videoSearch(term) {
+    YouTubeSearch({key: API_KEY, term : term}, (videos) => {
+      this.setState({
+          videos,
+          selectedVideo : videos[0]
+      })
+    })
+}
  render() {
     const {videos} = this.state
     return (
       <div>
-         <SearchBar />
-         <VideoDetails video={this.state.videos[0]}/>
-         <VideoList videos={videos}/>
+         <SearchBar onSearchTermChange={term => this.videoSearch(term)}/>
+         <VideoDetails video={this.state.selectedVideo}/>
+         <VideoList
+            videos={videos}
+            onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+            />
       </div>
     );
   }
