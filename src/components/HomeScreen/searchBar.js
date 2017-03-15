@@ -8,6 +8,7 @@ class SearchBar extends Component {
       this.state = { term: 'react JS'}
    }
 
+
    onInputChange(term) {
       this.setState({term})
       this.props.onSearchTermChange(term)
