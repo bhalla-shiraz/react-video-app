@@ -5,9 +5,8 @@ class SearchBar extends Component {
    constructor(props) {
       super(props)
 
-      this.state = { term: 'react JS'}
+      this.state = { term: 'flash'}
    }
-
 
    onInputChange(term) {
       this.setState({term})
