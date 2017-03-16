@@ -8,6 +8,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
+         <h3 className="search-bar">Welcome to The Video Searching App - Shiraz Bhalla</h3>
          <HomeScreen />
       </div>
     );
